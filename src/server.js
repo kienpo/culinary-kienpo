@@ -5,11 +5,11 @@ import webRoutes from "./router/web";
 
 let app = express();
 
-viewEngine(app);
-webRoutes(app);
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+viewEngine(app);
+webRoutes(app);
 
 let port = process.env.PORT || 8080;
 
