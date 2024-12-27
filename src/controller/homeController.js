@@ -1,4 +1,3 @@
-const { response} = require('express');
 import request from "request";
 
 require('dotenv').config();
