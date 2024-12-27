@@ -1,4 +1,4 @@
-require("dotenv").config();
+require('dotenv').config();
 
 let getHomePage = (req, res) => {
     return res.render("homepage.ejs");
@@ -10,6 +10,10 @@ let postWebhook = (req, res) => {
     console.log(`\u{1F7EA} Received webhook:`);
     console.dir(body, { depth: null });
     if (body.object === "page") {
+        body.entry.foreach(function(entry) {
+            let webhook_event = entry.messaging[0];
+            console.log(webhook_event);
+        })
         res.status(200).send("EVENT_RECEIVED");
     } else {
         res.sendStatus(404);
@@ -19,9 +23,9 @@ let postWebhook = (req, res) => {
 let getWebhook = (req, res) => {
 
     let VERIFY_TOKEN = process.env.VERIFY_TOKEN;
-    let mode = req.query["hub.mode"];
-    let token = req.query["hub.verify_token"];
-    let challenge = req.query["hub.challenge"];
+    let mode = req.query['hub.mode'];
+    let token = req.query['hub.verify_token'];
+    let challenge = req.query['hub.challenge'];
 
     
     if (mode && token) {
