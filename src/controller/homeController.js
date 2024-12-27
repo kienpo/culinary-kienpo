@@ -10,7 +10,7 @@ let postWebhook = (req, res) => {
     let body = req.body;
     
     if (body.object === "page") {
-        body.entry.foreach(function(entry) {
+        body.entry.forEach(function(entry) {
             let webhook_event = entry.messaging[0];
             console.log(webhook_event);
 
