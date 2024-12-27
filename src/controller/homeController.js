@@ -8,9 +8,7 @@ let getHomePage = (req, res) => {
 
 let postWebhook = (req, res) => {
     let body = req.body;
-
-    console.log(`\u{1F7EA} Received webhook:`);
-    console.dir(body, { depth: null });
+    
     if (body.object === "page") {
         body.entry.foreach(function(entry) {
             let webhook_event = entry.messaging[0];
