@@ -158,7 +158,7 @@ function callSendAPI(sender_psid, response) {
     });
 }
 
-let setupProfile = asyns(req, res) => {
+let setupProfile = async(req, res) => {
     let request_body = {
         "get_started" : {"payload": "GET_STARTED"},
         "whitelisted_domains" : ["https://culinary-kienpo-26343305da41.herokuapp.com/"]
