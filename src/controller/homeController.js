@@ -160,7 +160,7 @@ function callSendAPI(sender_psid, response) {
 
 let setupProfile = (req, res) => {
     let request_body = {
-        "get_started" : "GET_STARTED",
+        "get_started" : {"payload": "GET_STARTED"},
         "whitelisted_domains" : "https://culinary-kienpo-26343305da41.herokuapp.com/"
     }
 
