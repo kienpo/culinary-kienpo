@@ -158,14 +158,14 @@ function callSendAPI(sender_psid, response) {
     });
 }
 
-let setupProfile = (req, res) => {
+let setupProfile = asyns(req, res) => {
     let request_body = {
         "get_started" : {"payload": "GET_STARTED"},
-        "whitelisted_domains" : "https://culinary-kienpo-26343305da41.herokuapp.com/"
+        "whitelisted_domains" : ["https://culinary-kienpo-26343305da41.herokuapp.com/"]
     }
 
     // Send the HTTP request to the Messenger Platform
-    request({
+    await request({
         "uri": `https://graph.facebook.com/v21.0/me/messenger_profile?access_token=${PAGE_ACCESS_TOKEN}`,
         "qs": { "access_token": PAGE_ACCESS_TOKEN },
         "method": "POST",
@@ -177,6 +177,7 @@ let setupProfile = (req, res) => {
             console.error("Unable to user profile success':" + err);
         }
     });
+    return res.send("Setup user profile success!")
 }
 
 module.exports = {
